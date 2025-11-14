@@ -226,20 +226,24 @@ void add_temperature(vector<double>& temps, double temp)
 }
 void print_statistics(const vector<double>& temps)
 {
+	bool f = true;
     double max_t;
     for (int i = 0; i < temps.size(); i++)
     {
-        if (max_t < temps[i])
+        if (max_t < temps[i] || f)
         {
             max_t = temps[i];
+			f = false;
         }
     }
+	f = true;
     double min_t;
     for (int i = 0; i < temps.size(); i++)
     {
-        if (min_t > temps[i])
+        if (min_t > temps[i] || f)
         {
             min_t = temps[i];
+			f = false;
         }
     }
     double sum_t;
@@ -328,4 +332,5 @@ int main()
     std::cout << "\n";
 
     return 0;
+
 }
